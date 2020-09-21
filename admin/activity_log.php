@@ -29,8 +29,8 @@
 										<tbody>
 											
                               		<?php
-										$query = mysql_query("select * from  activity_log")or die(mysql_error());
-										while($row = mysql_fetch_array($query)){
+										$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from  activity_log")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+										while($row = mysqli_fetch_array($query)){
 									?>
 							
 
