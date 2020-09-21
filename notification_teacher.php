@@ -31,22 +31,22 @@
 						
 								<?php  }  ?>
 				
-					<?php $query = mysql_query("select * from teacher_notification
+					<?php $query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher_notification
 					LEFT JOIN teacher_class on teacher_class.teacher_class_id = teacher_notification.teacher_class_id
 					LEFT JOIN student on student.student_id = teacher_notification.student_id
 					LEFT JOIN class on teacher_class.class_id = class.class_id
 					LEFT JOIN subject on teacher_class.subject_id = subject.subject_id
 					where teacher_class.teacher_id = '$session_id'  order by  teacher_notification.date_of_notification DESC
-					")or die(mysql_error());
-					$count = mysql_num_rows($query);
-					while($row = mysql_fetch_array($query)){
+					")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+					$count = mysqli_num_rows($query);
+					while($row = mysqli_fetch_array($query)){
 					$assignment_id = $row['assignment_id'];
 					$get_id = $row['teacher_class_id'];
 					$id = $row['teacher_notification_id'];
 					
 					
-					$query_yes_read = mysql_query("select * from notification_read_teacher where notification_id = '$id' and teacher_id = '$session_id'")or die(mysql_error());
-					$read_row = mysql_fetch_array($query_yes_read);
+					$query_yes_read = mysqli_query($GLOBALS["___mysqli_ston"], "select * from notification_read_teacher where notification_id = '$id' and teacher_id = '$session_id'")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+					$read_row = mysqli_fetch_array($query_yes_read);
 					
 					$yes = $read_row['student_read']; 
 				
