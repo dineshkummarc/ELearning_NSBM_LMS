@@ -11,14 +11,14 @@
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div id="" class="muted pull-right">
-									<?php $query = mysql_query("select * from teacher_class_student
+									<?php $query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher_class_student
 														LEFT JOIN teacher_class ON teacher_class.teacher_class_id = teacher_class_student.teacher_class_id 
 														LEFT JOIN class ON class.class_id = teacher_class.class_id 
 														LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
 														LEFT JOIN teacher ON teacher.teacher_id = teacher_class.teacher_id
 														where student_id = '$session_id' and school_year = '$school_year'
-														")or die(mysql_error());
-														$count = mysql_num_rows($query);
+														")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+														$count = mysqli_num_rows($query);
 									?>
 												<span class="badge badge-info"><?php echo $count; ?></span>
 								</div>
@@ -29,7 +29,7 @@
   										<ul	 id="da-thumbs" class="da-thumbs">
 													<?php
 														if ($count != '0'){
-														while($row = mysql_fetch_array($query)){
+														while($row = mysqli_fetch_array($query)){
 														$id = $row['teacher_class_id'];	
 													?>
 											<li>
