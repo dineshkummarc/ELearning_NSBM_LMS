@@ -13,7 +13,7 @@
                                 move_uploaded_file($_FILES["image"]["tmp_name"], "admin/uploads/" . $_FILES["image"]["name"]);
                                 $location = "uploads/" . $_FILES["image"]["name"];
 								
-								mysql_query("update  teacher set location = '$location' where teacher_id  = '$session_id' ")or die(mysql_error());
+								mysqli_query($GLOBALS["___mysqli_ston"], "update  teacher set location = '$location' where teacher_id  = '$session_id' ")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 								
 								?>
  
