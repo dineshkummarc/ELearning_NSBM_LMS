@@ -16,13 +16,13 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
 								
-  											<?php $query = mysql_query("select * from teacher_class
+  											<?php $query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher_class
 										LEFT JOIN class ON class.class_id = teacher_class.class_id
 										LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
 										LEFT JOIN teacher ON teacher.teacher_id = teacher_class.teacher_id
 										
-										where teacher_class_id = '$get_id'")or die(mysql_error());
-										$row = mysql_fetch_array($query);
+										where teacher_class_id = '$get_id'")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+										$row = mysqli_fetch_array($query);
 										$id = $row['teacher_class_id'];
 				
 										?>
@@ -31,10 +31,10 @@
 										Lecturer: <strong><?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?></strong>
 															<br>
 															<hr>
-										<?php $query = mysql_query("select * from teacher_class
+										<?php $query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher_class
 											LEFT JOIN class_subject_overview ON class_subject_overview.teacher_class_id = teacher_class.teacher_class_id
-											where class_subject_overview.teacher_class_id = '$get_id'")or die(mysql_error());
-											$row_subject = mysql_fetch_array($query); ?>
+											where class_subject_overview.teacher_class_id = '$get_id'")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+											$row_subject = mysqli_fetch_array($query); ?>
 										<?php echo $row_subject['content']; ?>
                                 </div>
                             </div>
