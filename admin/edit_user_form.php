@@ -8,8 +8,8 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
 								<?php
-								$query = mysql_query("select * from users where user_id = '$get_id'")or die(mysql_error());
-								$row = mysql_fetch_array($query);
+								$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from users where user_id = '$get_id'")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+								$row = mysqli_fetch_array($query);
 								?>
 								<form method="post">
 										<div class="control-group">
@@ -52,9 +52,9 @@ $lastname = $_POST['lastname'];
 $username = $_POST['username'];
 
 
-mysql_query("update users set username = '$username'  , firstname = '$firstname' , lastname = '$lastname' where user_id = '$get_id' ")or die(mysql_error());
+mysqli_query($GLOBALS["___mysqli_ston"], "update users set username = '$username'  , firstname = '$firstname' , lastname = '$lastname' where user_id = '$get_id' ")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 
-mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Edit User $username')")or die(mysql_error());
+mysqli_query($GLOBALS["___mysqli_ston"], "insert into activity_log (date,username,action) values(NOW(),'$user_username','Edit User $username')")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 ?>
 <script>
   window.location = "admin_user.php"; 
