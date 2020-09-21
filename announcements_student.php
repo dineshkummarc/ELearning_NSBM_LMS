@@ -16,12 +16,12 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
 								 <?php
-								 $query_announcement = mysql_query("select * from teacher_class_announcements
+								 $query_announcement = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher_class_announcements
 																	where  teacher_class_id = '$get_id' order by date DESC
-																	")or die(mysql_error());
-								$count = mysql_num_rows($query_announcement);
+																	")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+								$count = mysqli_num_rows($query_announcement);
 								if ($count > 0){
-								 while($row = mysql_fetch_array($query_announcement)){
+								 while($row = mysqli_fetch_array($query_announcement)){
 								 $id = $row['teacher_class_announcements_id'];
 								 ?>
 											<div class="post"  id="del<?php echo $id; ?>">
