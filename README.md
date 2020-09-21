@@ -1,6 +1,6 @@
 # Elearning School Management
 
-##It is an online learning management system.
+## It is an online learning management system.
 This project is completely open source and also created using open source technologies. 
 
 It mainly contains three modules.
