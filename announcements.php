@@ -25,8 +25,8 @@
 								<?php
 									if (isset($_POST['post'])){
 									$content = $_POST['content'];
-									mysql_query("insert into teacher_class_announcements (teacher_class_id,teacher_id,content,date) values('$get_id','$session_id','$content',NOW())")or die(mysql_error());
-									mysql_query("insert into notification (teacher_class_id,notification,date_of_notification,link) value('$get_id','Add Annoucements',NOW(),'announcements_student.php')")or die(mysql_error());
+									mysqli_query($GLOBALS["___mysqli_ston"], "insert into teacher_class_announcements (teacher_class_id,teacher_id,content,date) values('$get_id','$session_id','$content',NOW())")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+									mysqli_query($GLOBALS["___mysqli_ston"], "insert into notification (teacher_class_id,notification,date_of_notification,link) value('$get_id','Add Annoucements',NOW(),'announcements_student.php')")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 									?>
 									<script>
 									window.location = 'announcements.php<?php echo '?id='.$get_id; ?>';
@@ -51,10 +51,10 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
 								 <?php
-								 $query_announcement = mysql_query("select * from teacher_class_announcements
+								 $query_announcement = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher_class_announcements
 																	where teacher_id = '$session_id'  and  teacher_class_id = '$get_id' order by date DESC
-																	")or die(mysql_error());
-								 while($row = mysql_fetch_array($query_announcement)){
+																	")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+								 while($row = mysqli_fetch_array($query_announcement)){
 								 $id = $row['teacher_class_announcements_id'];
 								 ?>
 											<div class="post"  id="del<?php echo $id; ?>">
