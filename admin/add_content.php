@@ -48,7 +48,7 @@
 										if (isset($_POST['save'])){
 										$title = $_POST['title'];
 										$content = $_POST['content'];
-										mysql_query("insert into content (title,content) value('$title','$content')")or die(mysql_error());
+										mysqli_query($GLOBALS["___mysqli_ston"], "insert into content (title,content) value('$title','$content')")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 										?>
 										<script>
 										window.location = 'content.php';
