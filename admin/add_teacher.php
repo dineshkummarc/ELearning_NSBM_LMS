@@ -22,8 +22,8 @@
                                             <select name="department"  class="" required>
                                              	<option></option>
 											<?php
-											$query = mysql_query("select * from department order by department_name");
-											while($row = mysql_fetch_array($query)){
+											$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from department order by department_name");
+											while($row = mysqli_fetch_array($query)){
 											
 											?>
 											<option value="<?php echo $row['department_id']; ?>"><?php echo $row['department_name']; ?></option>
@@ -68,8 +68,8 @@
                                 $department_id = $_POST['department'];
 								
 								
-								$query = mysql_query("select * from teacher where firstname = '$firstname' and lastname = '$lastname' ")or die(mysql_error());
-								$count = mysql_num_rows($query);
+								$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher where firstname = '$firstname' and lastname = '$lastname' ")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+								$count = mysqli_num_rows($query);
 								
 								if ($count > 0){ ?>
 								<script>
@@ -78,9 +78,9 @@
 								<?php
 								}else{
 
-                                mysql_query("insert into teacher (firstname,lastname,location,department_id)
+                                mysqli_query($GLOBALS["___mysqli_ston"], "insert into teacher (firstname,lastname,location,department_id)
 								values ('$firstname','$lastname','uploads/NO-IMAGE-AVAILABLE.jpg','$department_id')         
-								") or die(mysql_error()); ?>
+								") or die(mysqli_error($GLOBALS["___mysqli_ston"])); ?>
 								<script>
 							 	window.location = "teachers.php"; 
 								</script>
