@@ -32,8 +32,8 @@
 										</thead>
 										<tbody>
 													<?php
-													$user_query = mysql_query("select * from users")or die(mysql_error());
-													while($row = mysql_fetch_array($user_query)){
+													$user_query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from users")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+													while($row = mysqli_fetch_array($user_query)){
 													$id = $row['user_id'];
 													?>
 									
