@@ -66,8 +66,8 @@
 										$semester = $_POST['semester'];
 										
 										
-										$query = mysql_query("select * from subject where subject_code = '$subject_code' ")or die(mysql_error());
-										$count = mysql_num_rows($query);
+										$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from subject where subject_code = '$subject_code' ")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+										$count = mysqli_num_rows($query);
 
 										if ($count > 0){ ?>
 										<script>
@@ -75,10 +75,10 @@
 										</script>
 										<?php
 										}else{
-										mysql_query("insert into subject (subject_code,subject_title,description,unit,semester) values('$subject_code','$title','$description','$unit','$semester')")or die(mysql_error());
+										mysqli_query($GLOBALS["___mysqli_ston"], "insert into subject (subject_code,subject_title,description,unit,semester) values('$subject_code','$title','$description','$unit','$semester')")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 										
 										
-										mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Add Subject $subject_code')")or die(mysql_error());
+										mysqli_query($GLOBALS["___mysqli_ston"], "insert into activity_log (date,username,action) values(NOW(),'$user_username','Add Subject $subject_code')")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 										
 										
 										?>
