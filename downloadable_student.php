@@ -11,8 +11,8 @@
 					  
                         <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
-							<?php 	$query = mysql_query("select * FROM files where class_id = '$get_id' order by fdatein DESC ")or die(mysql_error());
-									$count = mysql_num_rows($query);
+							<?php 	$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * FROM files where class_id = '$get_id' order by fdatein DESC ")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+									$count = mysqli_num_rows($query);
 							?>
                                 <div id="" class="muted pull-right"><span class="badge badge-info"><?php echo $count; ?></span></div>
                             </div>
@@ -27,8 +27,8 @@
 								</script>					
 							</div>
 								<?php
-									$query = mysql_query("select * FROM files where class_id = '$get_id' order by fdatein DESC ")or die(mysql_error());
-									$count = mysql_num_rows($query);	
+									$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * FROM files where class_id = '$get_id' order by fdatein DESC ")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+									$count = mysqli_num_rows($query);	
 								if ($count == '0'){ ?>
 								<div class="alert alert-info"><i class="icon-info-sign"></i> No downloadable material currently uploaded.</div>
 								<?php
@@ -54,8 +54,8 @@
 										<tbody>
 											
                               		<?php
-										$query = mysql_query("select * FROM files where class_id = '$get_id' order by fdatein DESC ")or die(mysql_error());
-										while($row = mysql_fetch_array($query)){
+										$query = mysqli_query($GLOBALS["___mysqli_ston"], "select * FROM files where class_id = '$get_id' order by fdatein DESC ")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+										while($row = mysqli_fetch_array($query)){
 										$id  = $row['file_id'];
 									?>                              
 										<tr>
