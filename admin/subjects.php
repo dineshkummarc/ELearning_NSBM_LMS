@@ -31,8 +31,8 @@
 										<tbody>
 											
 												<?php
-											$subject_query = mysql_query("select * from subject")or die(mysql_error());
-											while($row = mysql_fetch_array($subject_query)){
+											$subject_query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from subject")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+											while($row = mysqli_fetch_array($subject_query)){
 											$id = $row['subject_id'];
 											?>
 										
