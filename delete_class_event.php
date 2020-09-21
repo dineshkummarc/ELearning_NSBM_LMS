@@ -3,7 +3,7 @@ include('admin/dbcon.php');
 if (isset($_POST['delete_event'])){
 $get_id = $_POST['get_id'];
 $id = $_POST['id'];
-mysql_query("delete from event where event_id = '$id'")or die(mysql_error());
+mysqli_query($GLOBALS["___mysqli_ston"], "delete from event where event_id = '$id'")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
 ?>
 <script>
 window.location = 'class_calendar.php<?php echo '?id='.$get_id; ?>';
