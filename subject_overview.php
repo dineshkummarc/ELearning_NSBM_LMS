@@ -12,12 +12,12 @@
                         <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div id="" class="muted pull-right">
-									<?php $query = mysql_query("select * from teacher_class
+									<?php $query = mysqli_query($GLOBALS["___mysqli_ston"], "select * from teacher_class
 										LEFT JOIN class_subject_overview ON class_subject_overview.teacher_class_id = teacher_class.teacher_class_id
-										where class_subject_overview.teacher_class_id = '$get_id'")or die(mysql_error());
-										$row = mysql_fetch_array($query);
+										where class_subject_overview.teacher_class_id = '$get_id'")or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+										$row = mysqli_fetch_array($query);
 										$id = $row['class_subject_overview_id'];
-										$count = mysql_num_rows($query);
+										$count = mysqli_num_rows($query);
 									if ($count > 0){
 									?>
 										  <a href="edit_subject_overview.php<?php echo '?id='.$get_id; ?>&<?php echo 'subject_id='.$id; ?>" class="btn btn-info"><i class="icon-pencil"></i> Edit Subject Overview</a>
